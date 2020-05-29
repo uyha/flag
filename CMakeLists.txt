@@ -6,5 +6,6 @@ project("Flag"
 add_subdirectory(src)
 
 if (${FLAG_INCLUDE_TESTS})
- add_subdirectory(tests)
+  message(STATUS "Including tests")
+  add_subdirectory(tests)
 endif()
