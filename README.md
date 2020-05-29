@@ -1,1 +1,1 @@
-# A utility for using bitwise operators on scoped enums that are flags
+# A utility library for using bitwise operators on flag enums
