@@ -1,4 +1,10 @@
 cmake_minimum_required(VERSION 3.8)
-project("ProjectName")
+project("Flag" 
+        VERSION 0.0 
+        LANGUAGES CXX)
 
-add_executable(main "main.cpp")
+add_subdirectory(src)
+
+if (${FLAG_INCLUDE_TESTS})
+ add_subdirectory(tests)
+endif()
