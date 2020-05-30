@@ -6,8 +6,6 @@
 
 using namespace river;
 
-constexpr bool cehck_compile_error = true;
-
 TEST_CASE("Operations on an enum flag") {
   enum class Enum : std::uint8_t { _0 = 0b000, _1 = 0b001, _2 = 0b010, _3 = 0b011, _4 = 0b100 };
 
