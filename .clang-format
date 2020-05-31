@@ -2,6 +2,7 @@
 BasedOnStyle: LLVM
 AlignConsecutiveAssignments: true
 AllowShortFunctionsOnASingleLine: Empty
+AlwaysBreakTemplateDeclarations: Yes
 BinPackArguments: false
 BinPackParameters: false
 BreakConstructorInitializers: BeforeComma
