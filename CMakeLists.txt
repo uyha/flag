@@ -7,5 +7,6 @@ add_subdirectory(src)
 
 if (${FLAG_INCLUDE_TESTS})
   message(STATUS "Including tests")
+  enable_testing()
   add_subdirectory(tests)
 endif()
