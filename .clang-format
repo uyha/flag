@@ -11,4 +11,3 @@ BreakInheritanceList: BeforeComma
 ColumnLimit: 100
 IncludeBlocks: Regroup
 KeepEmptyLinesAtTheStartOfBlocks: false
-
