@@ -1,0 +1,2 @@
+add_executable(file_permission file_permission.cpp)
+target_link_libraries(file_permission PRIVATE flag::flag)
