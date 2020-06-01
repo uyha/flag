@@ -1,6 +1,7 @@
 ﻿Language: Cpp
 BasedOnStyle: LLVM
 AlignConsecutiveAssignments: true
+AlignOperands: true
 AllowShortFunctionsOnASingleLine: Empty
 AlwaysBreakTemplateDeclarations: Yes
 BinPackArguments: false
