@@ -1,5 +1,5 @@
 add_executable(tests main.cpp)
-target_link_libraries(tests PRIVATE flag)
+target_link_libraries(tests PRIVATE river::flag)
 if(MSVC)
   target_compile_options(tests PRIVATE /permissive- /W4 /WX /w14640 /w14242 /w14826)
 else()

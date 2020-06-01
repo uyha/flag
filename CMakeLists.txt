@@ -5,7 +5,7 @@ project("Flag"
 
 set(CXX_STANDARD 20)
 
-add_subdirectory(src)
+add_subdirectory(include)
 
 if (${FLAG_INCLUDE_EXAMPLES})
   message(STATUS "Including examples")
