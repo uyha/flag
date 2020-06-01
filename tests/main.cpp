@@ -32,13 +32,11 @@ TEST_CASE("Operations on an enum flag") {
   }
 
   SECTION("Getting bits") {
-    using river::bit;
-    CHECK(std::is_same_v<std::uint8_t, decltype(bit<0>(Enum::_1))>);
-    CHECK(bit<0>(Enum::_1));
-    CHECK(bit<1>(Enum::_3));
-
-    CHECK_FALSE(bit<1>(Enum::_1));
-    CHECK_FALSE(bit<2>(Enum::_3));
+    using river::has;
+    CHECK(has<Enum::_1>(0b1111));
+    CHECK(has<Enum::_4>(0b0100));
+    CHECK_FALSE(has<Enum::_1>(0b0));
+    CHECK_FALSE(has<Enum::_4>(0b1000));
   }
 }
 
