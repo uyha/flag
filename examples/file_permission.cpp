@@ -22,8 +22,11 @@ int main() {
   using namespace river; // All operators are define in the river namespace
 
   // type of file_permission is std::uint16_t
-  auto const file_permission =
-      FilePermission::all_execute | FilePermission::all_read | FilePermission::user_write;
+  auto const file_permission = FilePermission::all_execute | FilePermission::all_write |
+                               FilePermission::all_read | FilePermission::group_execute |
+                               FilePermission::group_write | FilePermission::group_read |
+                               FilePermission::user_execute | FilePermission::user_write |
+                               FilePermission::user_read | FilePermission::directory;
 
   auto const all_execute = has<FilePermission::all_execute>(file_permission);
   auto const user_write  = has<FilePermission::user_write>(file_permission);
