@@ -16,4 +16,4 @@ jobs:
     - name: run-cmake
       uses: lukka/run-cmake@v2.5
       with: 
-        buildWithCMakeArgs: "-DFLAG_INCLUDE_TESTS=1"
+        cmakeAppendedArgs: "-DFLAG_INCLUDE_TESTS=1"
