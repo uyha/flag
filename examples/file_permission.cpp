@@ -17,7 +17,7 @@ enum class FilePermission : std::uint16_t {
 
   directory = 0b1'000'000'000
 };
-IS_FLAG_ENUM(FilePermission);
+IS_FLAG_ENUM(FilePermission); // Opting in making FilePermission enum as a flag enum
 
 int main() {
   using namespace river::flags; // All operators are define in the river namespace
