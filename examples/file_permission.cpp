@@ -17,6 +17,7 @@ enum class FilePermission : std::uint16_t {
 
   directory = 0b1'000'000'000
 };
+IS_FLAG(FilePermission);
 
 int main() {
   using namespace river; // All operators are define in the river namespace

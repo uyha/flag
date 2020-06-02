@@ -4,9 +4,10 @@
 #include <cstdint>
 #include <river/flag.hpp>
 
-TEST_CASE("Operations on an enum flag") {
-  enum class Enum : std::uint8_t { _0 = 0b000, _1 = 0b001, _2 = 0b010, _3 = 0b011, _4 = 0b100 };
+enum class Enum : std::uint8_t { _0 = 0b000, _1 = 0b001, _2 = 0b010, _3 = 0b011, _4 = 0b100 };
+IS_FLAG(Enum);
 
+TEST_CASE("Operations on an enum flag") {
   SECTION("Flip operators") {
     using river::operator~;
     CHECK(std::is_same_v<std::uint8_t, decltype(~Enum::_0)>);
@@ -41,8 +42,6 @@ TEST_CASE("Operations on an enum flag") {
 }
 
 TEST_CASE("Operations on enum and literals") {
-  enum class Enum : std::uint8_t { _0 = 0b000, _1 = 0b001, _2 = 0b010, _3 = 0b011, _4 = 0b100 };
-
   using river::operator&;
   CHECK((Enum::_1 & 0b1111'1111) == 0b1);
 }
