@@ -26,11 +26,11 @@ SOFTWARE.
 
 #include <type_traits>
 
-#define IS_FLAG(enum_name)                                                                         \
+#define IS_FLAG_ENUM(enum_name)                                                                    \
   template <>                                                                                      \
-  constexpr bool ::river::is_flag_v<enum_name> = true
+  constexpr bool ::river::flags::is_flag_v<enum_name> = true
 
-namespace river {
+namespace river::flags {
 template <typename T>
 concept unsigned_enum = std::is_enum_v<T> &&std::is_unsigned_v<std::underlying_type_t<T>>;
 

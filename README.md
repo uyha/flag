@@ -7,7 +7,7 @@ This library provides a set of free function templates which perform bitwise ope
 ```cpp
 #include <cassert>
 #include <cstdint>
-#include <flag.hpp>
+#include <river/flag.hpp>
 
 enum class FilePermission : std::uint16_t {
   all_execute = 0b0'000'000'001,
@@ -24,9 +24,10 @@ enum class FilePermission : std::uint16_t {
 
   directory = 0b1'000'000'000
 };
+IS_FLAG_ENUM(FilePermission);
 
 int main() {
-  using namespace river; // All operators are define in the river namespace
+  using namespace river::flags; // All operators are define in the river namespace
 
   // type of file_permission is std::uint16_t
   auto const file_permission = FilePermission::all_execute | FilePermission::all_write |
