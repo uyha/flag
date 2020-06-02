@@ -15,3 +15,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: run-cmake
       uses: lukka/run-cmake@v2.5
+      with: 
+        buildWithCMakeArgs: "-DFLAG_INCLUDE_TESTS=1"
