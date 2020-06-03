@@ -46,3 +46,5 @@ int main() {
 
 ## Usage
 This is a header only library, copy the file `flag.hpp` to your source code and start using it.
+
+Users can mark their scoped enums as flag enums by using the macro `IS_FLAG_ENUM` or specialize the variable template `is_flag_enum` to true.
