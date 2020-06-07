@@ -24,7 +24,7 @@ TEST_CASE("Operations on an enum flag") {
     CHECK((Enum::_3 ^ Enum::_4) == 0b111);
   }
 
-  SECTION("Chainning operations") {
+  SECTION("Chaining operations") {
     using river::flags::operator|, river::flags::operator&, river::flags::operator^;
     CHECK(std::is_same_v<std::uint8_t, decltype(Enum::_0 & Enum::_1 & Enum::_2)>);
     CHECK((Enum::_1 & Enum::_2 & Enum::_3) == 0b000);
@@ -44,4 +44,22 @@ TEST_CASE("Operations on an enum flag") {
 TEST_CASE("Operations on enum and literals") {
   using river::flags::operator&;
   CHECK((Enum::_1 & 0b1111'1111) == 0b1);
+}
+
+TEST_CASE("Check has function") {
+  using river::flags::has;
+  std::uint8_t value = 0b1u;
+  CHECK(has<Enum::_1>(value));
+  CHECK_FALSE(has<Enum::_3>(value));
+}
+
+TEST_CASE("Update value") {
+  using namespace river::flags;
+  std::uint8_t value = 0u;
+  value |= Enum::_1;
+  CHECK(has<Enum::_1>(value));
+  CHECK_FALSE(has<Enum::_3>(value));
+  value &= Enum::_3;
+  CHECK(has<Enum::_1>(value));
+  CHECK_FALSE(has<Enum::_3>(value));
 }

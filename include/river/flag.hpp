@@ -62,6 +62,10 @@ template <Flag T>
 constexpr auto operator|(T lhs, std::underlying_type_t<T> rhs) {
   return static_cast<std::underlying_type_t<T>>(underlying_value(lhs) | rhs);
 }
+template <Flag T>
+constexpr auto operator|=(std::underlying_type_t<T> &value, T const flag) {
+  return value = value | flag;
+}
 
 template <Flag T>
 constexpr auto operator&(T lhs, T rhs) {
@@ -74,6 +78,10 @@ constexpr auto operator&(std::underlying_type_t<T> lhs, T rhs) {
 template <Flag T>
 constexpr auto operator&(T lhs, std::underlying_type_t<T> rhs) {
   return static_cast<std::underlying_type_t<T>>(underlying_value(lhs) & rhs);
+}
+template <Flag T>
+constexpr auto operator&=(std::underlying_type_t<T> &value, T const flag) {
+  return value = value & flag;
 }
 
 template <Flag T>
@@ -88,9 +96,13 @@ template <Flag T>
 constexpr auto operator^(T lhs, std::underlying_type_t<T> rhs) {
   return static_cast<std::underlying_type_t<T>>(underlying_value(lhs) ^ rhs);
 }
+template <Flag T>
+constexpr auto operator^=(std::underlying_type_t<T> &value, T const flag) {
+  return value = value ^ flag;
+}
 
 template <auto mask>
 constexpr bool has(std::underlying_type_t<decltype(mask)> value) {
-  return value & mask;
+  return (value & mask) == underlying_value(mask);
 }
-} // namespace river
+} // namespace river::flags
