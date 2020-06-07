@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <river/flag.hpp>
 
+namespace filesystem {
 enum class FilePermission : std::uint16_t {
   all_execute = 0b0'000'000'001,
   all_write   = 0b0'000'000'010,
@@ -18,9 +19,11 @@ enum class FilePermission : std::uint16_t {
   directory = 0b1'000'000'000
 };
 IS_FLAG_ENUM(FilePermission); // Opting in making FilePermission enum as a flag enum
+} // namespace filesystem
 
 int main() {
   using namespace river::flags; // All operators are define in the river namespace
+  using filesystem::FilePermission;
 
   // type of file_permission is std::uint16_t
   auto file_permission = FilePermission::all_execute | FilePermission::user_execute;
