@@ -27,18 +27,23 @@ SOFTWARE.
 #include <type_traits>
 
 #define IS_FLAG_ENUM(enum_name)                                                                    \
-  template <>                                                                                      \
-  constexpr bool ::river::flags::is_flag_v<enum_name> = true
+  constexpr bool is_flag(enum_name) {                                                              \
+    return true;                                                                                   \
+  }
 
 namespace river::flags {
 template <typename T>
 concept unsigned_enum = std::is_enum_v<T> &&std::is_unsigned_v<std::underlying_type_t<T>>;
 
+namespace details {
 template <unsigned_enum T>
-constexpr bool is_flag_v = false;
+constexpr bool is_flag() {
+  return is_flag(T{});
+}
+} // namespace details
 
 template <typename T>
-concept Flag = unsigned_enum<T> &&is_flag_v<T>;
+concept Flag = unsigned_enum<T> &&details::is_flag<T>();
 
 template <Flag T>
 constexpr auto underlying_value(T enum_value) {

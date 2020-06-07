@@ -73,3 +73,13 @@ TEST_CASE("Update value") {
   CHECK(has<Enum::_2>(value));
   CHECK_FALSE(has<Enum::_3>(value));
 }
+
+namespace flag_test {
+enum class NSEnum : std::uint8_t { _0 = 0b000, _1 = 0b001, _2 = 0b010, _3 = 0b011, _4 = 0b100 };
+IS_FLAG_ENUM(NSEnum);
+TEST_CASE("Enum outside of global and river namespace") {
+  using namespace river::flags;
+  static_assert(Flag<NSEnum>);
+  CHECK(~NSEnum::_0 == 0b1111'1111u);
+}
+} // namespace flag_test
