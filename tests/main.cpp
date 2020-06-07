@@ -59,7 +59,17 @@ TEST_CASE("Update value") {
   value |= Enum::_1;
   CHECK(has<Enum::_1>(value));
   CHECK_FALSE(has<Enum::_3>(value));
-  value &= Enum::_3;
+
+  value |= Enum::_3;
   CHECK(has<Enum::_1>(value));
+  CHECK(has<Enum::_3>(value));
+
+  value &= Enum::_1;
+  CHECK(has<Enum::_1>(value));
+  CHECK_FALSE(has<Enum::_3>(value));
+
+  value ^= Enum::_3;
+  CHECK_FALSE(has<Enum::_1>(value));
+  CHECK(has<Enum::_2>(value));
   CHECK_FALSE(has<Enum::_3>(value));
 }
