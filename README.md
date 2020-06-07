@@ -52,4 +52,4 @@ This is a header only library, copy the file `flag.hpp` to your source code and 
 
 Users can mark their scoped enums as flag enums by using the macro `IS_FLAG_ENUM` or specialize
  the variable template `is_flag_enum` to true. Because of how namespaces work, the macro has to
-  be either called from the global namespace or from the river namespace.
+  be either called from the global namespace.
